@@ -1,0 +1,23 @@
+<ion-header-bar class="head">
+	<h1 class="title">TV Schedule</h1>
+</ion-header-bar>
+
+<ion-content>
+	<ion-refresher pulling-text="Pull to Refresh" refreshing-text="Loading..." on-refresh="loadBlogs()">
+	</ion-refresher>
+
+	<input class="searchForm" type="text" data-ng-model="searchShow.show.name" placeholder="Search Shows">
+	
+	<ion-list id="mainList">
+		<ion-item ng-repeat="show in shows | filter:searchShow:startsWith" class="item item-thumbnail-left">
+			<img class="tvImg" data-ng-src="{{show.show.image.medium}}" alt="author image">
+			<h2 data-ng-bind-html="show.show.name"></h2>
+			<p data-ng-bind-html="show.airtime"></p>
+			<p data-ng-bind-html="show.airdate"></p>
+			<p data-ng-bind-html="show.show.network.name"></p>
+			<a href="#/details/{{$index}}"><img src="img/info.svg"></a>
+		</ion-item>
+	</ion-list>
+</ion-content>
+<ion-footer-bar class="foot">
+</ion-footer-bar>
